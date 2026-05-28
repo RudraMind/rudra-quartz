@@ -33,7 +33,7 @@ jobs:
         run: |
           git clone git@github.com:RudraMind/rudra-vault.git /tmp/vault
           # Markdown-only, no symlink traversal, no binary leakage
-          rsync -r --include="*.md" --exclude="*" /tmp/vault/wiki/ content/
+          rsync -r --include="*/" --include="*.md" --exclude="*" /tmp/vault/wiki/ content/
           cp /tmp/vault/meta/index.md content/index.md
           rm -rf /tmp/vault
 
