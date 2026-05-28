@@ -1,13 +1,13 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Quartz 5
-  pageTitleSuffix: ""
+  pageTitle: Rudra Wiki
+  pageTitleSuffix: " — Rudra Wiki"
   enableSPA: true
   enablePopovers: true
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: quartz.jzhao.xyz
+  baseUrl: rudramind.github.io/rudra-quartz
   ignorePatterns:
     - private
     - templates
@@ -196,8 +196,7 @@ plugins:
     enabled: true
     options:
       links:
-        GitHub: https://github.com/jackyzha0/quartz
-        Discord Community: https://discord.gg/cRFFHYye7t
+        GitHub: https://github.com/RudraMind
   - source: github:quartz-community/recent-notes
     enabled: false
   - source: github:quartz-community/spacer

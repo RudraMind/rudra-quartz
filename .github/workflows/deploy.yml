@@ -1,0 +1,86 @@
+name: Deploy to GitHub Pages
+on:
+  repository_dispatch:
+    types: [vault-updated]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Load vault SSH key
+        uses: webfactory/ssh-agent@dc588b651fe13d87b5be7cb780b7b7bdae8800b5  # v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.VAULT_DEPLOY_KEY }}
+
+      - name: Add github.com to known hosts
+        run: ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Clone vault wiki content
+        run: |
+          git clone git@github.com:RudraMind/rudra-vault.git /tmp/vault
+          # Markdown-only, no symlink traversal, no binary leakage
+          rsync -r --include="*.md" --exclude="*" /tmp/vault/wiki/ content/
+          cp /tmp/vault/meta/index.md content/index.md
+          rm -rf /tmp/vault
+
+      - name: Remove SSH key before build steps
+        run: ssh-add -D
+        if: always()
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      - name: Cache Quartz plugins
+        uses: actions/cache@v4
+        with:
+          path: .quartz/plugins
+          key: ${{ runner.os }}-plugins-${{ hashFiles('quartz.lock.json') }}
+          restore-keys: ${{ runner.os }}-plugins-
+
+      - run: npm ci
+
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
+        continue-on-error: true
+
+      - name: Install Quartz plugins
+        run: npx quartz plugin install
+
+      - name: Build Quartz
+        run: npx quartz build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
