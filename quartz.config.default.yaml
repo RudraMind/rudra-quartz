@@ -23,22 +23,22 @@ configuration:
       lightMode:
         light: "#faf8f8"
         lightgray: "#e5e5e5"
-        gray: "#b8b8b8"
+        gray: "#9aa0a6"
         darkgray: "#4e4e4e"
         dark: "#2b2b2b"
-        secondary: "#284b63"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
+        secondary: "#1a73e8"
+        tertiary: "#34a853"
+        highlight: rgba(26, 115, 232, 0.1)
         textHighlight: "#fff23688"
       darkMode:
         light: "#161618"
         lightgray: "#393639"
-        gray: "#646464"
+        gray: "#9aa0a6"
         darkgray: "#d4d4d4"
         dark: "#ebebec"
-        secondary: "#7b97aa"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
+        secondary: "#8ab4f8"
+        tertiary: "#81c995"
+        highlight: rgba(138, 180, 248, 0.1)
         textHighlight: "#b3aa0288"
 plugins:
   - source: github:quartz-community/created-modified-date
@@ -132,13 +132,19 @@ plugins:
     enabled: true
     options:
       localGraph:
-        scale: 1.2
-        centerForce: 0.4
+        scale: 1.0
+        centerForce: 0.3
+        repelForce: 0.8
+        linkDistance: 55
+        enableRadial: true
+        focusOnHover: true
       globalGraph:
         scale: 0.9
+        repelForce: 0.6
+        linkDistance: 50
     layout:
-      position: afterBody
-      priority: 10
+      position: beforeBody
+      priority: 1
   - source: github:quartz-community/search
     enabled: true
     layout:
