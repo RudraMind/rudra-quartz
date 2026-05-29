@@ -130,8 +130,14 @@ plugins:
       priority: 50
   - source: github:quartz-community/graph
     enabled: true
+    options:
+      localGraph:
+        scale: 1.2
+        centerForce: 0.4
+      globalGraph:
+        scale: 0.9
     layout:
-      position: right
+      position: afterBody
       priority: 10
   - source: github:quartz-community/search
     enabled: true

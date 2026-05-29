@@ -1,3 +1,7 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+.graph > .graph-outer {
+  height: 400px;
+}
