@@ -128,7 +128,7 @@ plugins:
     layout:
       position: left
       priority: 50
-  - source: github:quartz-community/graph
+  - source: "./local-plugins/graph"
     enabled: true
     options:
       localGraph:
@@ -138,10 +138,57 @@ plugins:
         linkDistance: 55
         enableRadial: true
         focusOnHover: true
+        colorGroups:
+          - path: "wiki/sources"
+            color: "#00E5FF"
+          - path: "wiki/concepts"
+            color: "#4488FF"
+          - path: "wiki/entities"
+            color: "#AAFF00"
+          - path: "wiki/projects"
+            color: "#00FF88"
+          - path: "wiki/personal"
+            color: "#FF69B4"
+          - path: "wiki/queries"
+            color: "#FF8844"
+          - path: "wiki/archive"
+            color: "#888888"
+          - path: "raw/inbox"
+            color: "#FFD700"
+          - path: "raw/notes"
+            color: "#00AAFF"
+          - path: "raw/articles"
+            color: "#FF88FF"
+          - path: "meta"
+            color: "#FF4466"
       globalGraph:
         scale: 0.9
-        repelForce: 0.6
-        linkDistance: 50
+        repelForce: 0.8
+        linkDistance: 60
+        enableRadial: true
+        colorGroups:
+          - path: "wiki/sources"
+            color: "#00E5FF"
+          - path: "wiki/concepts"
+            color: "#4488FF"
+          - path: "wiki/entities"
+            color: "#AAFF00"
+          - path: "wiki/projects"
+            color: "#00FF88"
+          - path: "wiki/personal"
+            color: "#FF69B4"
+          - path: "wiki/queries"
+            color: "#FF8844"
+          - path: "wiki/archive"
+            color: "#888888"
+          - path: "raw/inbox"
+            color: "#FFD700"
+          - path: "raw/notes"
+            color: "#00AAFF"
+          - path: "raw/articles"
+            color: "#FF88FF"
+          - path: "meta"
+            color: "#FF4466"
     layout:
       position: beforeBody
       priority: 1
