@@ -133,11 +133,12 @@ plugins:
     options:
       localGraph:
         scale: 1.0
-        centerForce: 0.3
-        repelForce: 0.8
-        linkDistance: 55
-        enableRadial: true
+        centerForce: 0.15
+        repelForce: 2.0
+        linkDistance: 40
+        enableRadial: false
         focusOnHover: true
+        depth: 2
         colorGroups:
           - path: "sources"
             color: "#00E5FF"
@@ -156,10 +157,11 @@ plugins:
           - path: "tags/"
             color: "#FFD700"
       globalGraph:
-        scale: 0.9
-        repelForce: 0.8
-        linkDistance: 60
-        enableRadial: true
+        scale: 0.6
+        centerForce: 0.1
+        repelForce: 1.8
+        linkDistance: 50
+        enableRadial: false
         colorGroups:
           - path: "sources"
             color: "#00E5FF"
