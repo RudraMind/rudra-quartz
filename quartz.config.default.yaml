@@ -140,6 +140,8 @@ plugins:
         focusOnHover: true
         depth: 2
         colorGroups:
+          - path: "index"
+            color: "#FF2222"
           - path: "sources"
             color: "#00E5FF"
           - path: "concepts"
@@ -149,7 +151,7 @@ plugins:
           - path: "projects"
             color: "#00FF88"
           - path: "personal"
-            color: "#FF69B4"
+            color: "#FF3333"
           - path: "queries"
             color: "#FF8844"
           - path: "archive"
@@ -164,6 +166,8 @@ plugins:
         enableRadial: true
         radialStrength: 0.8
         colorGroups:
+          - path: "index"
+            color: "#FF2222"
           - path: "sources"
             color: "#00E5FF"
           - path: "concepts"
@@ -173,7 +177,7 @@ plugins:
           - path: "projects"
             color: "#00FF88"
           - path: "personal"
-            color: "#FF69B4"
+            color: "#FF3333"
           - path: "queries"
             color: "#FF8844"
           - path: "archive"
