@@ -158,10 +158,11 @@ plugins:
             color: "#FFD700"
       globalGraph:
         scale: 0.6
-        centerForce: 0.1
-        repelForce: 1.8
-        linkDistance: 50
-        enableRadial: false
+        centerForce: 0.05
+        repelForce: 0.8
+        linkDistance: 40
+        enableRadial: true
+        radialStrength: 0.8
         colorGroups:
           - path: "sources"
             color: "#00E5FF"
